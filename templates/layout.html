@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<title>Chat Room</title>
+
+<link rel = stylesheet type = text/css
+	href = "{{url_for('static', filename = 'style.css') }}">
+
+<div class = page>
+	<h1>Our team</h1>
+	<div class = metanav>
+	{% if not session.logged_in %}
+		<a href = "{{url_for('login') }}"> log in></a><br>
+		<a href = "{{url_for('register') }}"> register></a><br>
+	{% else %}
+		<a href = "{{url_for('logout') }}"> logout></a><br>
+	{% endif %}
+	</div>
+	<br>
+	<br>
+	<br>
+	
+	{% for message in get_flashed_messages() %}
+	<div class=flash>{{message}}</div>
+	{% endfor %}
+	{% block body %} {% endblock %}
+</div>
